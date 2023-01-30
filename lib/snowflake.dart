@@ -30,15 +30,16 @@ class Snowflake {
     }
   }
 
+  /// genreate the snowflake id
   int getId() {
-    int currentTimestamp = getCurrentTimestamp();
-    if (tolerateTimestampBackwardsIfNeed(currentTimestamp)) {
-      currentTimestamp = getCurrentTimestamp();
+    int currentTimestamp = _getCurrentTimestamp();
+    if (_tolerateTimestampBackwardsIfNeed(currentTimestamp)) {
+      currentTimestamp = _getCurrentTimestamp();
     }
     // if current timestamp equals to previous one, we try to increase sequence
     if (lastTimestamp == currentTimestamp) {
-      if (sequenceIncreaseIfReachimitReset()) {
-        currentTimestamp = waitUntilNextTime(currentTimestamp);
+      if (_sequenceIncreaseIfReachimitReset()) {
+        currentTimestamp = _waitUntilNextTime(currentTimestamp);
       }
     } else {
       sequence = 0;
@@ -49,32 +50,32 @@ class Snowflake {
         sequence;
   }
 
-  bool tolerateTimestampBackwardsIfNeed(int curTimestamp) {
+  bool _tolerateTimestampBackwardsIfNeed(int curTimestamp) {
     if (lastTimestamp <= curTimestamp) {
       return false;
     }
     int timeDifference = lastTimestamp - curTimestamp;
     if (timeDifference < maxTimestampBackwardsToWait) {
-      waitUntilNextTime(lastTimestamp);
+      _waitUntilNextTime(lastTimestamp);
     } else {
       throw const SnowflakeException("machine clock moved backward too much");
     }
     return true;
   }
 
-  bool sequenceIncreaseIfReachimitReset() {
+  bool _sequenceIncreaseIfReachimitReset() {
     return 0 == (sequence = (sequence + 1) & squenceMask);
   }
 
-  int waitUntilNextTime(int timestampToContinue) {
+  int _waitUntilNextTime(int timestampToContinue) {
     int timestamp;
     do {
-      timestamp = getCurrentTimestamp();
+      timestamp = _getCurrentTimestamp();
     } while (timestamp <= timestampToContinue);
     return timestamp;
   }
 
-  int getCurrentTimestamp() {
+  int _getCurrentTimestamp() {
     return DateTime.now().millisecondsSinceEpoch;
   }
 }

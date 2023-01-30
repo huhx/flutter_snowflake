@@ -1,6 +1,8 @@
 class WorkerIdentity {
   static const int sixMask = (1 << 6) - 1;
 
+  /// get worker id from ip address
+  /// [ipAddress] is ipv4 address
   int getWorkerId(String ipAddress) {
     final List<String> ips = ipAddress.split(".");
 
