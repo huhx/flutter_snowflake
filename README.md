@@ -7,7 +7,7 @@ SnowFlake id generator, inspired by Twitter. For more details, you can read the 
 ### Add dependency
 ```yaml
 dependencies:
-  flutter_snowflake: ^0.0.2
+  flutter_snowflake: ^0.0.3
 ```
 
 ### Generate id

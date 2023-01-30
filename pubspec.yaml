@@ -1,6 +1,6 @@
 name: flutter_snowflake
 description: snowFlake id generator inspired by Twitter
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/huhx/flutter_snowflake
 
 environment:
