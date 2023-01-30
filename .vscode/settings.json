@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true,
+        ".vscode": true,
+        ".idea": true,
+        ".dart_tool": true,
+        "build": true,
+    },
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "dart.closingLabels": false,
+}
