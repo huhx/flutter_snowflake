@@ -7,7 +7,7 @@ SnowFlake id 生成器，灵感来自 Twitter. 更多细节，可以参考<a hre
 ### 添加依赖
 ```yaml
 dependencies:
-  flutter_snowflake: ^0.0.3
+  flutter_snowflake: ^0.0.3+1
 ```
 
 ### 生成id

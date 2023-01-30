@@ -1,6 +1,8 @@
 import 'package:flutter_snowflake/snowflake_exception.dart';
 
+/// snowflake include the mainly logic
 class Snowflake {
+  /// timestamp start from (Wed Oct 26 2021 00:00:00 GMT+0800 (China Standard Time)).
   static const int epoch = 1666713600000;
 
   static const int wrokerIdBits = 14;
@@ -50,11 +52,12 @@ class Snowflake {
         sequence;
   }
 
+  /// if need to tolerate timesStamp backwards
   bool _tolerateTimestampBackwardsIfNeed(int curTimestamp) {
     if (lastTimestamp <= curTimestamp) {
       return false;
     }
-    int timeDifference = lastTimestamp - curTimestamp;
+    final int timeDifference = lastTimestamp - curTimestamp;
     if (timeDifference < maxTimestampBackwardsToWait) {
       _waitUntilNextTime(lastTimestamp);
     } else {
@@ -67,6 +70,7 @@ class Snowflake {
     return 0 == (sequence = (sequence + 1) & squenceMask);
   }
 
+  /// wait time that before next start
   int _waitUntilNextTime(int timestampToContinue) {
     int timestamp;
     do {
@@ -75,6 +79,7 @@ class Snowflake {
     return timestamp;
   }
 
+  /// get current timestamp
   int _getCurrentTimestamp() {
     return DateTime.now().millisecondsSinceEpoch;
   }

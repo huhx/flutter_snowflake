@@ -1,6 +1,6 @@
 name: flutter_snowflake
-description: snowFlake id generator inspired by Twitter
-version: 0.0.3
+description: Snowflake is a network service for generating unique ID numbers at high scale with some simple guarantees.
+version: 0.0.3+1
 homepage: https://github.com/huhx/flutter_snowflake
 
 environment:

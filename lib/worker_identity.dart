@@ -1,3 +1,4 @@
+/// worker identity for the snowflake
 class WorkerIdentity {
   static const int sixMask = (1 << 6) - 1;
 

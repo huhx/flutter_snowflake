@@ -1,3 +1,6 @@
+## 0.0.3+1
+* add comments in method
+
 ## 0.0.3
 * code quantity improvement
 

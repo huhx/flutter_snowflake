@@ -1,3 +1,4 @@
+/// snowflake exception
 class SnowflakeException implements Exception {
   final String message;
 
