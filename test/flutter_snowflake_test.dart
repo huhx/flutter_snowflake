@@ -1,13 +1,14 @@
 import 'package:flutter_snowflake/flutter_snowflake.dart';
+import 'package:flutter_snowflake/snowflake.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test("test id generator", () {
-    final int id1 = SnowflakeIdGenerator.getId();
-    final int id2 = SnowflakeIdGenerator.getId();
+    final Snowflake snowflake = Snowflake(2, 3);
 
-    final int value = id2 - id1;
+    final int id1 = snowflake.getId();
+    final int id2 = snowflake.getId();
 
-    expect(value, greaterThan(0));
+    expect(id2 - id1, greaterThan(0));
   });
 }
